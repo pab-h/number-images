@@ -5,6 +5,9 @@ from PIL import Image
 
 NUMBERS_FILE = "./numbers.txt"     
 
+def normalize(value: int) -> int:
+    return value % 255
+
 def createImage(pixelsArray: list, to: str) -> None:
     length = lenOfPixelImageArray(len(pixelsArray))
 
@@ -25,9 +28,9 @@ def formatPixelImageArray(pixels: list, width: int, heigth: int) -> list[list[st
         for j in range(width): 
 
             pixelNormalized = [
-                int(pixels[i*10 + j][0]) % 255,
-                int(pixels[i*10 + j][1]) % 255,
-                int(pixels[i*10 + j][2]) % 255,
+                normalize(int(pixels[i*10 + j])),
+                normalize(int(pixels[i*10 + j])),
+                normalize(int(pixels[i*10 + j]))
             ] 
 
             pixelRow.append(pixelNormalized)
